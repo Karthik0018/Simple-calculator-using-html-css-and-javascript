@@ -5,7 +5,7 @@ function updateDisplay() {
 }
 
 function appendCharacter(char) {
-    if (displayValue === '0') {
+    if (displayValue === '0' || displayValue === 'Error') {
         displayValue = char;
     } else {
         displayValue += char;
@@ -20,6 +20,8 @@ function clearDisplay() {
 
 function calculate() {
     try {
+        
+        displayValue = displayValue.replace(/\^/g, '**');
         displayValue = eval(displayValue).toString();
         updateDisplay();
     } catch (error) {
